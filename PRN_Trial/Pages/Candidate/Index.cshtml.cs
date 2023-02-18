@@ -29,6 +29,7 @@ namespace PRN_Trial.Pages.Candidate
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
 
             DateTime _birthDay = (DateTime)SqlDateTime.MinValue;
+            int size = 3;
 
             if (string.IsNullOrEmpty(fullName)) fullName = "";
             if (!string.IsNullOrEmpty(birthDay))
@@ -38,8 +39,8 @@ namespace PRN_Trial.Pages.Candidate
             }
             if (pageSelect == 0) pageSelect = 1;
 
-            int pageCount = candidateRepo.PageCount(candidateRepo.GetAll(fullName, _birthDay).Count(), 3);
-            Candidates = candidateRepo.FindByCodition(pageSelect, 3, fullName, _birthDay);
+            int pageCount = candidateRepo.PageCount(candidateRepo.GetAll(fullName, _birthDay).Count(), size);
+            Candidates = candidateRepo.FindByCodition(pageSelect, size, fullName, _birthDay);
 
             ViewData["pageCount"] = pageCount;
             ViewData["activePage"] = pageSelect;
