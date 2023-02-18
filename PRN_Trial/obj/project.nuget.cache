@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Nd444I5oCQJAGFsJ1zWsPehrKUmElm9QPGpn0yWLfKYM5Png0CjuUadlQGX0ql/TWCDx70s4dbeh6VVIuXXxIw==",
+  "dgSpecHash": "qy2Zud7NvY3zOSXW2smuyAFAJdOXMCcBUp67dfDQfepAHclQNeQwKBTyE/m3umudha60xUJiE+RSUaGi5KaLuQ==",
   "success": true,
-  "projectFilePath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Prapare\\PRN221_Trial\\Solution_PRN221\\PRN_Trial\\PRN_Trial.csproj",
+  "projectFilePath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\PRN_Trial\\PRN_Trial.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phamt\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phamt\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

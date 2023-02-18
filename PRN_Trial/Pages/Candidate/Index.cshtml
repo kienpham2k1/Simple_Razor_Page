@@ -20,7 +20,7 @@
 <p>
     <a class="btn btn-primary" asp-page="Create">Create New</a>
 </p>
-<form asp-action="Index">
+<form asp-action="Index" method="get">
     <table width="100%">
         <thead>
             <tr>
@@ -46,7 +46,7 @@
     </table>
 </form>
 <p></p>
-<table class="table" style="height:500px">
+<table class="table" style="height:500px ; min-width:1500px">
     <thead>
         <tr>
             <th>
@@ -77,27 +77,65 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CandidateId)
                 </td>
-                <td>
+                <td style="max-width:201px; min-width: 200px">
                     @Html.DisplayFor(modelItem => item.Fullname)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Birthday)
                 </td>
-                <td>
+                <td style="max-width:350px; min-width:349px">
                     @Html.DisplayFor(modelItem => item.ProfileShortDescription)
                 </td>
-                <td>
+                <td style="max-width:201px; min-width: 200px">
                     @Html.DisplayFor(modelItem => item.ProfileUrl)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PostingId)
                 </td>
                 <td>
-                    <a asp-page="Details" asp-route-id="@item.CandidateId" class="btn btn-info">Details</a>
-                    <a asp-page="Edit" asp-route-id="@item.CandidateId" class="btn btn-primary">Edit</a>
-                    <a asp-page="Delete" asp-route-id="@item.CandidateId" class="btn btn-danger">Delete</a>
+                    <a asp-page="Details" asp-route-id="@item.CandidateId" class="bi bi-info-square btn btn-primary"></a>
+                    <a asp-page="Edit" asp-route-id="@item.CandidateId" class="bi bi-pencil-square btn btn-warning"></a>
+                    <button type="button" class="bi bi-trash3-fill btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    </button>
                 </td>
             </tr>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 style="color:red" > Do you realy want to delete this candidate?</h4>
+                            <b>Candidate ID:</b> @item.CandidateId <br>
+                            <b>
+                                Candidate Fullname:
+                            </b>@item.Fullname <br>
+                            <b>
+                                Birthday:
+                            </b> @item.Birthday <br>
+                            <b>
+                                ProfileShortDescription:
+                            </b> @item.ProfileShortDescription <br>
+                            <b>
+                                ProfileUrl:
+                            </b>@item.ProfileUrl <br>
+                            <b>PostingId:</b> @item.PostingId <br>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <form method="post" asp-page="Delete">
+                                <input type="text" name="CandidateId" asp-for="@item.CandidateId" hidden readonly />
+                                <input type="submit" value="Delete" class="btn btn-success" />
+                            </form>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     </tbody>
 
@@ -154,7 +192,6 @@
                     @{
                         var nextPage = activePage + 1;
                     }
-                    @*<a class="page-link" href="/Index?page=@nextPage&fullname=@ViewBag.fullName&birthDay=@ViewBag.birthDay">Next</a>*@
                     <a asp-page="Index" asp-route-fullName="@fullName"
                    asp-route-birthDay="@birthDay"
                    asp-route-pageSelect="@nextPage" class="page-link">Next</a>

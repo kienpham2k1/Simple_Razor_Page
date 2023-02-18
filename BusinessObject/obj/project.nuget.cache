@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YEMUqdpFIGK/Rn64ph4uMvmGhPzuNqTbpZR0PoRFmZZ67TB3El6laMc3sEYXn88ts7say1QhGwraZa8hHX3fGg==",
+  "dgSpecHash": "I++vuKGr4aYUvF/hRmQZCJmALS8B3yiwUxp83acJPYhrT9i9ViLBqeFH0sCKWogngoO+H0EkArxUXMMKkRIkCw==",
   "success": true,
-  "projectFilePath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Prapare\\PRN221_Trial\\Solution_PRN221\\BusinessObject\\BusinessObject.csproj",
+  "projectFilePath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phamt\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phamt\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

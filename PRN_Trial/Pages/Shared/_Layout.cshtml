@@ -8,11 +8,12 @@
     <title>@ViewData["Title"] - PRN_Trial</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+            <div class="container-fluid" style="margin-left:125px; margin-right:125px">
                 <a class="navbar-brand" asp-area="" asp-page="">PRN_Trial</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +32,7 @@
                     <ul class="navbar-nav flex-grow-2">
                         @*<li class="nav-item"> <p>Hello: </p></li>*@
                         <li class="nav-item">
-                           
+
                             <form asp-page="/Auth/Logout" method="post">
                                 <input type="submit" class="navbar-brand btn btn-danger" style="color:white" value="Logout" />
                             </form>
@@ -41,10 +42,12 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid" style="margin-left:125px; margin-right:125px">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">

@@ -29,7 +29,6 @@ namespace PRN_Trial.Pages.Candidate
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
 
             DateTime _birthDay = (DateTime)SqlDateTime.MinValue;
-            int pageCount = candidateRepo.PageCount(candidateRepo.GetAll("", _birthDay).Count(), 3);
 
             if (string.IsNullOrEmpty(fullName)) fullName = "";
             if (!string.IsNullOrEmpty(birthDay))
@@ -39,7 +38,8 @@ namespace PRN_Trial.Pages.Candidate
             }
             if (pageSelect == 0) pageSelect = 1;
 
-            Candidates = candidateRepo.FindByCodition(pageSelect, 3, "", _birthDay);
+            int pageCount = candidateRepo.PageCount(candidateRepo.GetAll(fullName, _birthDay).Count(), 3);
+            Candidates = candidateRepo.FindByCodition(pageSelect, 3, fullName, _birthDay);
 
             ViewData["pageCount"] = pageCount;
             ViewData["activePage"] = pageSelect;
@@ -47,25 +47,25 @@ namespace PRN_Trial.Pages.Candidate
             ViewData["birthDay"] = birthDay;
             return Page();
         }
-        public async Task<IActionResult> OnPost()
-        {
-            var session = HttpContext.Session;
-            if (session.GetInt32("Role") != 2) return  RedirectToPage("/Auth/AccessDenied");
-            string fullname = Request.Form["fullname"];
-            string birthDay = Request.Form["birthDay"];
-            DateTime _birthDay = (DateTime)SqlDateTime.MinValue;
-            if (!string.IsNullOrEmpty(birthDay))
-            {
-                _birthDay = DateTime.Parse(birthDay);
-                birthDay = _birthDay.ToString("yyyy-MM-dd");
-            }
-            Candidates = candidateRepo.FindByCodition(1, 3, fullname, _birthDay);
-            int pageCount = candidateRepo.PageCount(candidateRepo.GetAll(fullname, _birthDay).Count(), 3);
-            ViewData["pageCount"] = pageCount;
-            //ViewData["activePage"] = 1;
-            ViewData["fullName"] = fullname;
-            ViewData["birthDay"] = birthDay;
-            return Page();
-        }
+        //public async Task<IActionResult> OnPost()
+        //{
+        //    var session = HttpContext.Session;
+        //    if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
+        //    string fullname = Request.Form["fullname"];
+        //    string birthDay = Request.Form["birthDay"];
+        //    DateTime _birthDay = (DateTime)SqlDateTime.MinValue;
+        //    if (!string.IsNullOrEmpty(birthDay))
+        //    {
+        //        _birthDay = DateTime.Parse(birthDay);
+        //        birthDay = _birthDay.ToString("yyyy-MM-dd");
+        //    }
+        //    Candidates = candidateRepo.FindByCodition(1, 3, fullname, _birthDay);
+        //    int pageCount = candidateRepo.PageCount(candidateRepo.GetAll(fullname, _birthDay).Count(), 3);
+        //    ViewData["pageCount"] = pageCount;
+        //    //ViewData["activePage"] = 1;
+        //    ViewData["fullName"] = fullname;
+        //    ViewData["birthDay"] = birthDay;
+        //    return Page();
+        //}
     }
 }
