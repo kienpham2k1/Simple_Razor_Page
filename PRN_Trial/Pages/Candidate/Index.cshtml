@@ -1,0 +1,165 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+@model PRN_Trial.Pages.Candidate.IndexModel
+@{
+    int activePage = 1;
+    if (ViewData["activePage"] != null) activePage = (int)ViewData["activePage"];
+    int pageCount = 1;
+    if (ViewData["pageCount"] != null) pageCount = (int)ViewData["pageCount"];
+    string fullName = "";
+    if (ViewData["fullName"] != null) fullName = (string)ViewData["fullName"];
+    string birthDay = "";
+    if (ViewData["birthDay"] != null) birthDay = (string)ViewData["birthDay"];
+
+    //var nextPage = activePage;
+}
+<h1>View</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
+</p>
+<form asp-action="Index">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>
+                    Full name
+                </td>
+                <td>
+                    Birth Day
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" name="fullName" value="@ViewData["fullName"]" />
+                </td>
+                <td>
+                    <input class="form-control" type="date" name="birthDay" value="@ViewData["birthDay"]" />
+                </td>
+                <td><input type="submit" class="btn btn-primary px-3 form-control" style=" background: #001F75 !important;" value="Search" /></td>
+            </tr>
+        </thead>
+    </table>
+</form>
+<p></p>
+<table class="table" style="height:500px">
+    <thead>
+        <tr>
+            <th>
+                CandidateId
+            </th>
+            <th>
+                Fullname
+            </th>
+            <th>
+                Birthday
+            </th>
+            <th>
+                ProfileShortDescription
+            </th>
+            <th>
+                ProfileUrl
+            </th>
+            <th>
+                PostingId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Candidates)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfileShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfileUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingId)
+                </td>
+                <td>
+                    <a asp-page="Details" asp-route-id="@item.CandidateId" class="btn btn-info">Details</a>
+                    <a asp-page="Edit" asp-route-id="@item.CandidateId" class="btn btn-primary">Edit</a>
+                    <a asp-page="Delete" asp-route-id="@item.CandidateId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<div class="d-flex justify-content-center">
+    <nav aria-label="...">
+        <ul class="pagination">
+            @if (activePage == 1)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    @{
+                        var previousPage = activePage - 1;
+                    }
+                    <a asp-page="Index" asp-route-fullName="@fullName"
+                   asp-route-birthDay="@birthDay"
+                   asp-route-pageSelect="@previousPage" class="page-link">Previous</a>
+                </li>
+            }
+            @for (int i = 1; i <= pageCount; i++)
+            {
+
+                @if (activePage == i)
+                {
+                    <li class="page-item active">
+                        <a class="page-link">@i <span class="sr-only">(current)</span></a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="Index" asp-route-fullName="@fullName"
+                   asp-route-birthDay="@birthDay"
+                   asp-route-pageSelect="@i">
+                            @i
+                        </a>
+                    </li>
+                }
+            }
+            @if (activePage == pageCount)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    @{
+                        var nextPage = activePage + 1;
+                    }
+                    @*<a class="page-link" href="/Index?page=@nextPage&fullname=@ViewBag.fullName&birthDay=@ViewBag.birthDay">Next</a>*@
+                    <a asp-page="Index" asp-route-fullName="@fullName"
+                   asp-route-birthDay="@birthDay"
+                   asp-route-pageSelect="@nextPage" class="page-link">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

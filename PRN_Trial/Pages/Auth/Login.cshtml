@@ -1,0 +1,39 @@
+﻿@page "/"
+@model PRN_Trial.Pages.Auth.LoginModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <div class="d-flex justify-content-center">
+        <h1>Login Page</h1>
+    </div>
+    <h4 class="d-flex justify-content-center" style="color:red">@ViewBag.Message</h4>
+    <div class=" d-flex justify-content-center">
+        <form   asp-action="Login" method="post" style="width: 500px">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" >Email address</label>
+                <input name="email" type="text" id="email" class="form-control" required />
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <label class="form-label"  >Password</label>
+                <input name="password" type="password" id="password" class="form-control" required />
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        </form>
+    </div>
+</body>
+</html>

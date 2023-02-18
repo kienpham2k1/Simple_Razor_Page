@@ -1,0 +1,24 @@
+﻿@page
+
+@model PRN_Trial.Pages.Auth.AuthenticatedModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PRN_Trial</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <h1 style="color:red">Access Denied</br>You are not allowed to do this function!</h1>
+            <a asp-page="/Auth/Login">Back to Login Page</a>
+        </main>
+    </div>
+</body>
+</html>
+
