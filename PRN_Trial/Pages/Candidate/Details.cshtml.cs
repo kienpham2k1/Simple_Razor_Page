@@ -21,9 +21,9 @@ namespace PRN_Trial.Pages.Candidate
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
 
             Candidate = candidateRepo.GetCandidateById(id);
-            if (Candidate != null)
-                return Page();
-            else return RedirectToPage("NotFoundPage");
+            if (Candidate == null)
+                return RedirectToPage("NotFoundPage");
+            return Page();
         }
     }
 }

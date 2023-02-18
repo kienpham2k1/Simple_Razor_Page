@@ -9,6 +9,7 @@ using DataAccess.Utils;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Http;
+using System.Data.SqlTypes;
 
 namespace PRN_Trial.Pages.Candidate
 {
@@ -38,14 +39,25 @@ namespace PRN_Trial.Pages.Candidate
 
             if (!String.IsNullOrEmpty(Candidate.Fullname))
                 if (!Validation.ValidateCapitalName(Candidate.Fullname))
-                    ModelState.AddModelError(string.Empty, "Name must capital each letter");
-
+                    ModelState.AddModelError(string.Empty, "Name must capital each letter.");
+            if (Candidate.Birthday < (DateTime)SqlDateTime.MinValue) {
+                ModelState.AddModelError(string.Empty, $"Birth day must greater {SqlDateTime.MinValue}.");
+            }
             if (ModelState.IsValid)
             {
-                string nextId = candidateRepo.GetNextId();
-                Candidate.CandidateId = nextId;
-                candidateRepo.CreateCandidate(Candidate);
-                return RedirectToPage("Index");
+                try
+                {
+                    string nextId = candidateRepo.GetNextId();
+                    Candidate.CandidateId = nextId;
+                    candidateRepo.CreateCandidate(Candidate);
+                    return RedirectToPage("Index");
+                }
+                catch (Exception e) {
+                    ViewData["Message"] =e.Message;
+                    IEnumerable<JobPosting> jops = jobPostingRepo.GetAll();
+                    ViewData["jobPostings"] = jops;
+                    return Page();
+                }
             }
             else
             {

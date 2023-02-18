@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Threading.Tasks;
 
 namespace PRN_Trial.Pages.Candidate
@@ -40,10 +41,27 @@ namespace PRN_Trial.Pages.Candidate
             if (!String.IsNullOrEmpty(Candidate.Fullname))
                 if (!Validation.ValidateCapitalName(Candidate.Fullname))
                     ModelState.AddModelError(string.Empty, "Name must capital each letter");
+            if (Candidate.Birthday < (DateTime)SqlDateTime.MinValue)
+            {
+                ModelState.AddModelError(string.Empty, $"Birth day must greater {SqlDateTime.MinValue}.");
+            }
             if (ModelState.IsValid)
             {
-                candidateRepo.UpdateCandidate(Candidate);
-                return RedirectToPage("Index");
+                try
+                {
+                    if (candidateRepo.GetCandidateById(Candidate.CandidateId) == null)
+                    {
+                        //throw new Exception("Not found Candidate");
+                        return RedirectToPage("NotFoundPage");
+                    }
+                    candidateRepo.UpdateCandidate(Candidate);
+                    return RedirectToPage("Index");
+                }
+                catch (Exception ex)
+                {
+                    ViewData["Message"] = ex.Message;
+                    return Page();
+                }
             }
             else
             {

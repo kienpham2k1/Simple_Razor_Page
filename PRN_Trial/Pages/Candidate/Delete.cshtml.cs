@@ -31,9 +31,12 @@ namespace PRN_Trial.Pages.Candidate
         {
             var session = HttpContext.Session;
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
-            //var CandidateFound = candidateRepo.GetCandidateById(Candidate.CandidateId);
             try
             {
+                if (candidateRepo.GetCandidateById(Candidate.CandidateId) == null) {
+                    //throw new Exception("Not found candidate");
+                    return RedirectToPage("NotFoundCandidate");
+                }
                 candidateRepo.DeleteCandidate(Candidate.CandidateId);
                 return RedirectToPage("Index");
             }
@@ -42,11 +45,6 @@ namespace PRN_Trial.Pages.Candidate
                 ViewData["Message"] = e.Message;
                 return Page();
             }
-            //if (ModelState.IsValid) {
-            //    candidateRepo.GetCandidateById(Candidate.CandidateId);
-            //    return RedirectToPage("Index");
-            //}
-            //return Page();
         }
     }
 }
