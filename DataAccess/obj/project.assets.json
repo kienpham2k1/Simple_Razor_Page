@@ -1821,7 +1821,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "BusinessObject/1.0.0": {
+      "DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
@@ -1830,10 +1830,10 @@
           "Microsoft.Extensions.Configuration.Json": "5.0.0"
         },
         "compile": {
-          "bin/placeholder/BusinessObject.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/BusinessObject.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         }
       }
     }
@@ -6170,15 +6170,15 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "BusinessObject/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
-      "path": "../BusinessObject/BusinessObject.csproj",
-      "msbuildProject": "../BusinessObject/BusinessObject.csproj"
+      "path": "../BusinessObject/DataAccess.csproj",
+      "msbuildProject": "../BusinessObject/DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "BusinessObject >= 1.0.0"
+      "DataAccess >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6188,9 +6188,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj",
-      "projectName": "DataAccess",
-      "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj",
+      "projectName": "BusinessObject",
+      "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj",
       "packagesPath": "C:\\Users\\phamt\\.nuget\\packages\\",
       "outputPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
@@ -6213,8 +6213,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj": {
-              "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj"
+            "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj": {
+              "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj"
             }
           }
         }

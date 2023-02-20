@@ -17,28 +17,20 @@ namespace PRN_Trial.Pages.Candidate
         private readonly ICandidateProfileRepository candidateRepo = null;
         private readonly IJobPostingRepository jobPostingRepo = null;
         public IEnumerable<CandidateProfile> Candidates { get; set; }
-
         public IndexModel()
         {
             candidateRepo = new CandidateProfileRepository();
             jobPostingRepo = new JobPostingRepository();
         }
-        public async Task<IActionResult> OnGet(string fullName, string birthDay, int pageSelect)
+        public IActionResult OnGet(string fullName, string birthDay = "", int pageSelect =1, int size  = 3 )
         {
             var session = HttpContext.Session;
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
-
+            ViewData["FullName"] = session.GetString("fullName");
             DateTime _birthDay = (DateTime)SqlDateTime.MinValue;
-            int size = 3;
-
             if (string.IsNullOrEmpty(fullName)) fullName = "";
-            if (!string.IsNullOrEmpty(birthDay))
-            {
-                _birthDay = DateTime.Parse(birthDay);
-                //birthDay = _birthDay.ToString("yyyy-MM-dd");
-            }
-            if (pageSelect == 0) pageSelect = 1;
-
+            if (!string.IsNullOrEmpty(birthDay)) _birthDay = DateTime.Parse(birthDay);
+                if (_birthDay < (DateTime)SqlDateTime.MinValue) _birthDay = (DateTime)SqlDateTime.MinValue;
             int pageCount = candidateRepo.PageCount(candidateRepo.GetAll(fullName, _birthDay).Count(), size);
             Candidates = candidateRepo.FindByCodition(pageSelect, size, fullName, _birthDay);
 
@@ -48,25 +40,5 @@ namespace PRN_Trial.Pages.Candidate
             ViewData["birthDay"] = birthDay;
             return Page();
         }
-        //public async Task<IActionResult> OnPost()
-        //{
-        //    var session = HttpContext.Session;
-        //    if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
-        //    string fullname = Request.Form["fullname"];
-        //    string birthDay = Request.Form["birthDay"];
-        //    DateTime _birthDay = (DateTime)SqlDateTime.MinValue;
-        //    if (!string.IsNullOrEmpty(birthDay))
-        //    {
-        //        _birthDay = DateTime.Parse(birthDay);
-        //        birthDay = _birthDay.ToString("yyyy-MM-dd");
-        //    }
-        //    Candidates = candidateRepo.FindByCodition(1, 3, fullname, _birthDay);
-        //    int pageCount = candidateRepo.PageCount(candidateRepo.GetAll(fullname, _birthDay).Count(), 3);
-        //    ViewData["pageCount"] = pageCount;
-        //    //ViewData["activePage"] = 1;
-        //    ViewData["fullName"] = fullname;
-        //    ViewData["birthDay"] = birthDay;
-        //    return Page();
-        //}
     }
 }

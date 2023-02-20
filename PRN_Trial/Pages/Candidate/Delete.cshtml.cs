@@ -17,26 +17,23 @@ namespace PRN_Trial.Pages.Candidate
         {
             candidateRepo = new CandidateProfileRepository();
         }
-        public async Task<IActionResult> OnGet(string id)
+        public IActionResult OnGet(string id)
         {
             var session = HttpContext.Session;
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
+
             Candidate = candidateRepo.GetCandidateById(id);
             if (Candidate == null)
                 return RedirectToPage("NotFoundPage");
-
             return Page();
         }
-        public async Task<IActionResult> OnPost()
+        public IActionResult OnPost()
         {
             var session = HttpContext.Session;
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
             try
             {
-                if (candidateRepo.GetCandidateById(Candidate.CandidateId) == null) {
-                    //throw new Exception("Not found candidate");
-                    return RedirectToPage("NotFoundCandidate");
-                }
+                if (candidateRepo.GetCandidateById(Candidate.CandidateId) == null) return RedirectToPage("NotFoundCandidate");
                 candidateRepo.DeleteCandidate(Candidate.CandidateId);
                 return RedirectToPage("Index");
             }

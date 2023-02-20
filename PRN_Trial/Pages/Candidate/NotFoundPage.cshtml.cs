@@ -5,8 +5,5 @@ namespace PRN_Trial.Pages.Candidate
 {
     public class NotFoundPageModel : PageModel
     {
-        public void OnGet()
-        {
-        }
     }
 }

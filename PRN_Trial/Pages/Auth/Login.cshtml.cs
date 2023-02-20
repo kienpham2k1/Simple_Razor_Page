@@ -35,6 +35,7 @@ namespace PRN_Trial.Pages.Auth
                         {
                             session.SetInt32("Role", 2);
                             session.SetString("FullName", loginAccount.FullName);
+                            ViewData["fullName"] = loginAccount.FullName.ToString();
                             return RedirectToPage("/Candidate/Index");
                         }
                     }

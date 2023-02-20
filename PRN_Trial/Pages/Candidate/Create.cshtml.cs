@@ -13,58 +13,45 @@ using System.Data.SqlTypes;
 
 namespace PRN_Trial.Pages.Candidate
 {
-    [BindProperties]
     public class CreateModel : PageModel
     {
         private readonly ICandidateProfileRepository candidateRepo = null;
         private readonly IJobPostingRepository jobPostingRepo = null;
+        [BindProperty]
         public CandidateProfile Candidate { get; set; }
         public CreateModel()
         {
             candidateRepo = new CandidateProfileRepository();
             jobPostingRepo = new JobPostingRepository();
         }
-        public async Task<IActionResult> OnGet()
+        public IActionResult OnGet()
         {
             var session = HttpContext.Session;
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
-            IEnumerable<JobPosting> jops = jobPostingRepo.GetAll();
-            ViewData["jobPostings"] = jops;
+            ViewData["jobPostings"] = jobPostingRepo.GetAll();
             return Page();
         }
-        public async Task<IActionResult> OnPost()
+        public IActionResult OnPost()
         {
             var session = HttpContext.Session;
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");
-
-            if (!String.IsNullOrEmpty(Candidate.Fullname))
+            //Validate name
+            if (!string.IsNullOrEmpty(Candidate.Fullname))
                 if (!Validation.ValidateCapitalName(Candidate.Fullname))
                     ModelState.AddModelError(string.Empty, "Name must capital each letter.");
-            if (Candidate.Birthday < (DateTime)SqlDateTime.MinValue) {
+            //Validate birth day
+            if (Candidate.Birthday < (DateTime)SqlDateTime.MinValue)
                 ModelState.AddModelError(string.Empty, $"Birth day must greater {SqlDateTime.MinValue}.");
-            }
+
             if (ModelState.IsValid)
             {
-                try
-                {
-                    string nextId = candidateRepo.GetNextId();
-                    Candidate.CandidateId = nextId;
+                    Candidate.CandidateId = candidateRepo.GetNextId();
                     candidateRepo.CreateCandidate(Candidate);
                     return RedirectToPage("Index");
-                }
-                catch (Exception e) {
-                    ViewData["Message"] =e.Message;
-                    IEnumerable<JobPosting> jops = jobPostingRepo.GetAll();
-                    ViewData["jobPostings"] = jops;
-                    return Page();
-                }
             }
-            else
-            {
-                IEnumerable<JobPosting> jops = jobPostingRepo.GetAll();
-                ViewData["jobPostings"] = jops;
-                return Page();
-            }
+            ViewData["jobPostings"] = jobPostingRepo.GetAll();
+            return Page();
+
         }
     }
 }

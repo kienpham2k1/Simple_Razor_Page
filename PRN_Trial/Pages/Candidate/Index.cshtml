@@ -4,16 +4,10 @@
 }
 @model PRN_Trial.Pages.Candidate.IndexModel
 @{
-    int activePage = 1;
-    if (ViewData["activePage"] != null) activePage = (int)ViewData["activePage"];
-    int pageCount = 1;
-    if (ViewData["pageCount"] != null) pageCount = (int)ViewData["pageCount"];
-    string fullName = "";
-    if (ViewData["fullName"] != null) fullName = (string)ViewData["fullName"];
-    string birthDay = "";
-    if (ViewData["birthDay"] != null) birthDay = (string)ViewData["birthDay"];
-
-    //var nextPage = activePage;
+    int activePage = (int)ViewData["activePage"];
+    int pageCount = (int)ViewData["pageCount"];
+    string fullName = (string)ViewData["fullName"];
+    string birthDay = (string)ViewData["birthDay"];
 }
 <h1>View</h1>
 
@@ -140,48 +134,51 @@
     </tbody>
 
 </table>
-<div class="d-flex justify-content-center">
-    <nav aria-label="...">
-        <ul class="pagination">
-            @if (activePage == 1)
-            {
-                <li class="page-item disabled text-center" style="width:100px">
-                    <a class="page-link border border-secondary">Previous</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item text-center" style="width:100px">
-                    @{
-                        var previousPage = activePage - 1;
-                    }
-                    <a asp-page="Index" asp-route-fullName="@fullName"
+@if (pageCount > 1)
+{
+    <div class="d-flex justify-content-center">
+        <nav aria-label="...">
+            <ul class="pagination">
+                @if (activePage == 1)
+                {
+                    <li class="page-item disabled text-center" style="width:100px">
+                        <a class="page-link border border-secondary">Previous</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item text-center" style="width:100px">
+                        @{
+                            var previousPage = activePage - 1;
+                        }
+                        <a asp-page="Index" asp-route-fullName="@fullName"
                    asp-route-birthDay="@birthDay"
                    asp-route-pageSelect="@previousPage" class="page-link btn btn-primary">Previous</a>
+                    </li>
+                }
+                <li class="page-item text-center" style="width:100px; margin-left:10px; margin-right:10px">
+                    <a class="page-link border border-primary">
+                        @activePage/@pageCount
+                    </a>
                 </li>
-            }
-            <li class="page-item text-center" style="width:100px; margin-left:10px; margin-right:10px">
-                <a class="page-link border border-primary">
-                    @activePage/@pageCount
-                </a>
-            </li>
-            @if (activePage == pageCount)
-            {
-                <li class="page-item disabled text-center" style="width:100px">
-                    <a class="page-link border border-secondary">Next</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item text-center  " style="width:100px">
-                    @{
-                        var nextPage = activePage + 1;
-                    }
-                    <a asp-page="Index" asp-route-fullName="@fullName"
+                @if (activePage == pageCount)
+                {
+                    <li class="page-item disabled text-center" style="width:100px">
+                        <a class="page-link border border-secondary">Next</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item text-center  " style="width:100px">
+                        @{
+                            var nextPage = activePage + 1;
+                        }
+                        <a asp-page="Index" asp-route-fullName="@fullName"
                    asp-route-birthDay="@birthDay"
                    asp-route-pageSelect="@nextPage" class="page-link btn btn-primary">Next</a>
-                </li>
-            }
-        </ul>
-    </nav>
-</div>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+}

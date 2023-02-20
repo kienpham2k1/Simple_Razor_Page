@@ -6274,9 +6274,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj",
-      "projectName": "BusinessObject",
-      "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj",
+      "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj",
+      "projectName": "DataAccess",
+      "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\phamt\\.nuget\\packages\\",
       "outputPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\obj\\",
       "projectStyle": "PackageReference",

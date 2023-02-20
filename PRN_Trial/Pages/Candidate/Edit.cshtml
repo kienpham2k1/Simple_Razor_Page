@@ -11,7 +11,6 @@
 <hr />
 <h4 style="color:red">@ViewBag.Message</h4>
 <div class="row">
-    @*<div class="col-md-4">*@
         <div>
         <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -47,13 +46,9 @@
                 <span asp-validation-for="Candidate.PostingId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-success" />
+                <input type="submit" value="Edit" class="btn btn-success" /> <a asp-page="Index">Back to List</a>
             </div>
         </form>
 
     </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>

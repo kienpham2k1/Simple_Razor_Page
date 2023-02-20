@@ -1,0 +1,15 @@
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\bin\Debug\net5.0\DataAccess.deps.json
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\bin\Debug\net5.0\DataAccess.runtimeconfig.json
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\bin\Debug\net5.0\DataAccess.runtimeconfig.dev.json
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\bin\Debug\net5.0\DataAccess.dll
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\bin\Debug\net5.0\DataAccess.pdb
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.csproj.AssemblyReference.cache
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.csproj.CoreCompileInputs.cache
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.dll
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\refint\DataAccess.dll
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.pdb
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\DataAccess.genruntimeconfig.cache
+E:\Fpt\PRN221\PRN221_TrialTest\Git\Simple_Razor_Page\BusinessObject\obj\Debug\net5.0\ref\DataAccess.dll

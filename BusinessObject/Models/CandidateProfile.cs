@@ -14,6 +14,7 @@ namespace BusinessObject.Models
         [StringLength(maximumLength: 200, MinimumLength = 12, ErrorMessage = "Value for candidate’s FullName is greater than 12 characters.")]
         public string Fullname { get; set; }
         [Required(ErrorMessage = "DateTime is required")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? Birthday { get; set; }
         [Required(ErrorMessage = "Profile Short Description is required")]
         [StringLength(maximumLength: int.MaxValue, MinimumLength =12, ErrorMessage = "Value for ProfileDescription from 12 – 200 characters")]

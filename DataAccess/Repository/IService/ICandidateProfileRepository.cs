@@ -13,7 +13,7 @@ namespace DataAccess.Repository
         CandidateProfile GetCandidateById(String id);
         IEnumerable<CandidateProfile> GetAll();
         IEnumerable<CandidateProfile> GetAll(string name, DateTime birthDay);
-        IEnumerable<CandidateProfile> FindByCodition(int page, int size, string fullName, DateTime? birthDay);
+        IEnumerable<CandidateProfile>  FindByCodition(int page, int size, string fullName, DateTime? birthDay);
         void CreateCandidate(CandidateProfile newCandidate);
         void UpdateCandidate(CandidateProfile newCandidate);
         void DeleteCandidate(string id);

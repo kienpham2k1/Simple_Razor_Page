@@ -15,7 +15,7 @@ namespace PRN_Trial.Pages.Candidate
         {
             candidateRepo = new CandidateProfileRepository();
         }
-        public async Task<IActionResult> OnGet(string id)
+        public IActionResult OnGet(string id)
         {
             var session = HttpContext.Session;
             if (session.GetInt32("Role") != 2) return RedirectToPage("/Auth/AccessDenied");

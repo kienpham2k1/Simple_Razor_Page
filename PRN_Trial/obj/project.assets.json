@@ -2428,9 +2428,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
-          "Microsoft.Extensions.Configuration": "5.0.0",
-          "Microsoft.Extensions.Configuration.Json": "5.0.0"
+          "DataAccess": "1.0.0"
         },
         "compile": {
           "bin/placeholder/BusinessObject.dll": {}
@@ -2443,7 +2441,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "BusinessObject": "1.0.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
+          "Microsoft.Extensions.Configuration": "5.0.0",
+          "Microsoft.Extensions.Configuration.Json": "5.0.0"
         },
         "compile": {
           "bin/placeholder/DataAccess.dll": {}
@@ -7704,13 +7704,13 @@
     },
     "BusinessObject/1.0.0": {
       "type": "project",
-      "path": "../BusinessObject/BusinessObject.csproj",
-      "msbuildProject": "../BusinessObject/BusinessObject.csproj"
+      "path": "../DataAccess/BusinessObject.csproj",
+      "msbuildProject": "../DataAccess/BusinessObject.csproj"
     },
     "DataAccess/1.0.0": {
       "type": "project",
-      "path": "../DataAccess/DataAccess.csproj",
-      "msbuildProject": "../DataAccess/DataAccess.csproj"
+      "path": "../BusinessObject/DataAccess.csproj",
+      "msbuildProject": "../BusinessObject/DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7754,11 +7754,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj": {
-              "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj"
+            "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj": {
+              "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj"
             },
-            "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj"
+            "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj": {
+              "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj"
             }
           }
         }

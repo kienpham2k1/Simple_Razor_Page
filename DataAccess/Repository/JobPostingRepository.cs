@@ -9,6 +9,19 @@ namespace DataAccess.Repository
 {
     public class JobPostingRepository : IJobPostingRepository
     {
-        public IEnumerable<JobPosting> GetAll() => JobPostingDAO.Instance.GetAll();
+        public IEnumerable<JobPosting> GetAll()
+        {
+            IEnumerable<JobPosting> jobs = null;
+            try
+            {
+                using var context = new CandidateManagementContext();
+                jobs = context.JobPostings.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return jobs;
+        }
     }
 }

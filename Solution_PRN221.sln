@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F519AF18-DD8D-4C11-890F-47DAF9AB921D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObject", "DataAccess\BusinessObject.csproj", "{F519AF18-DD8D-4C11-890F-47DAF9AB921D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7FB6E8C3-BD61-450B-A900-A66E2AFC9EC7} = {7FB6E8C3-BD61-450B-A900-A66E2AFC9EC7}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObject", "BusinessObject\BusinessObject.csproj", "{7FB6E8C3-BD61-450B-A900-A66E2AFC9EC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "BusinessObject\DataAccess.csproj", "{7FB6E8C3-BD61-450B-A900-A66E2AFC9EC7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PRN221_Trial", "web\PRN221_Trial.csproj", "{8955E9BC-AE6E-489C-B23E-E896F8F719FD}"
 EndProject

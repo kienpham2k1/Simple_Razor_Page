@@ -1,23 +1,147 @@
 ﻿using BusinessObject.Models;
+using DataAccess.Utils;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Data.SqlTypes;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
     public class CandidateProfileRepository : ICandidateProfileRepository
     {
-        public CandidateProfile GetCandidateById(String id) => CandidateDAO.Instance.GetCandidateById(id);
-        public IEnumerable<CandidateProfile> GetAll() => CandidateDAO.Instance.GetAll();
-        public IEnumerable<CandidateProfile> GetAll(string name, DateTime birthDay) => CandidateDAO.Instance.GetAll(name, birthDay);
-        public IEnumerable<CandidateProfile> FindByCodition(int page, int size, string fullName, DateTime? birthDay) => CandidateDAO.Instance.FindByCodition(page, size, fullName, birthDay);
-        public void CreateCandidate(CandidateProfile newCandidate) => CandidateDAO.Instance.CreateCandidate(newCandidate);
-        public void UpdateCandidate(CandidateProfile newCandidate) => CandidateDAO.Instance.UpdateCandidate(newCandidate);
-        public void DeleteCandidate(string id) => CandidateDAO.Instance.DeleteCandidate(id);
-        public string GetNextId( ) => CandidateDAO.Instance.GetNextId( );
-        public int PageCount(int countList, int size) => CandidateDAO.Instance.PageCount(countList, size);
+        public CandidateProfile GetCandidateById(String id)
+        {
+            CandidateProfile candidate = null;
+            try
+            {
+                using var context = new CandidateManagementContext();
+                candidate = context.CandidateProfiles.SingleOrDefault(c => c.CandidateId.Equals(id));
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
+            return candidate;
+        }
+        public IEnumerable<CandidateProfile> GetAll()
+        {
+            var candidates = new List<CandidateProfile>();
+            try
+            {
+                using var context = new CandidateManagementContext();
+                candidates = context.CandidateProfiles.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+            return candidates;
+        }
+        public IEnumerable<CandidateProfile> GetAll(string name, DateTime birthDay)
+        {
+            var candidates = new List<CandidateProfile>();
+            try
+            {
+                using var context = new CandidateManagementContext();
+                if (!String.IsNullOrEmpty(name) || birthDay > DateTime.MinValue)
+                    candidates = context.CandidateProfiles.Where(c => c.Fullname.Contains(name) && c.Birthday > birthDay).ToList();
+                else candidates = GetAll().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+            return candidates;
+        }
+        public IEnumerable<CandidateProfile> FindByCodition(int page, int pageSize, string fullName, DateTime? birthDay)
+        {
+            var candidates = new List<CandidateProfile>();
+            try
+            {
+                using var context = new CandidateManagementContext();
+                var skip = (page - 1) * pageSize;
+                candidates = context.CandidateProfiles
+                    .OrderBy(c => c.CandidateId)
+                    .Where(c => c.Fullname.Contains(fullName) && c.Birthday > birthDay)
+                    .Skip(skip)
+                    .Take(pageSize)
+                    .ToList();
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+            return candidates;
+        }
+
+        public void CreateCandidate(CandidateProfile newCandidate)
+        {
+            try
+            {
+                CandidateProfile _c = GetCandidateById(newCandidate.CandidateId);
+                if (_c == null)
+                {
+                    using var context = new CandidateManagementContext();
+                    context.CandidateProfiles.Add(newCandidate);
+                    context.SaveChanges();
+                }
+                else { throw new Exception("This candidate is already exist."); }
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+        public void UpdateCandidate(CandidateProfile newCandidate)
+        {
+            try
+            {
+                CandidateProfile _c = GetCandidateById(newCandidate.CandidateId);
+                if (_c != null)
+                {
+                    using var context = new CandidateManagementContext();
+                    context.CandidateProfiles.Update(newCandidate);
+                    context.SaveChanges();
+                }
+                else throw new Exception("This candidate is not exist.");
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+        public void DeleteCandidate(string id)
+        {
+            try
+            {
+                CandidateProfile _c = GetCandidateById(id);
+                if (_c != null)
+                {
+                    using var context = new CandidateManagementContext();
+                    context.CandidateProfiles.Remove(_c);
+                    context.SaveChanges();
+                }
+                else throw new Exception("This candidate is not exist.");
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+        public string GetNextId()
+        {
+            string result = "";
+            try
+            {
+                using var context = new CandidateManagementContext();
+                var maxValue = context.CandidateProfiles.Max(x => x.CandidateId);
+                CandidateProfile _result = context.CandidateProfiles.First(x => x.CandidateId == maxValue);
+                result = RegexFormat.FormatId(_result.CandidateId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public int PageCount(int countList, int pageSize)
+        {
+            int pageCount = 0;
+            try
+            {
+                var _pageCount = (double)countList / pageSize;
+                pageCount = (int)Math.Ceiling(_pageCount);
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+            return pageCount;
+        }
     }
 }

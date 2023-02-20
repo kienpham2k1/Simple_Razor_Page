@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNetCore.Http;
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -30,12 +28,8 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav flex-grow-2">
-                        @*<li class="nav-item"> <p>Hello: </p></li>*@
                         <li class="nav-item">
-
-                            <form asp-page="/Auth/Logout" method="post">
-                                <input type="submit" class="navbar-brand btn btn-danger" style="color:white" value="Logout" />
-                            </form>
+                            <a asp-page="/Auth/Logout" type="submit" class="navbar-brand btn btn-danger" style="color:white" value="Logout">Logout</a>
                         </li>
                     </ul>
                 </div>

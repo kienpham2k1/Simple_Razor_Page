@@ -1840,9 +1840,7 @@
       },
       "BusinessObject/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
-          "Microsoft.Extensions.Configuration": "5.0.0",
-          "Microsoft.Extensions.Configuration.Json": "5.0.0"
+          "DataAccess": "1.0.0"
         },
         "runtime": {
           "BusinessObject.dll": {}
@@ -1853,7 +1851,9 @@
       },
       "DataAccess/1.0.0": {
         "dependencies": {
-          "BusinessObject": "1.0.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
+          "Microsoft.Extensions.Configuration": "5.0.0",
+          "Microsoft.Extensions.Configuration.Json": "5.0.0"
         },
         "runtime": {
           "DataAccess.dll": {}

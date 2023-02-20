@@ -4,12 +4,12 @@
     "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\PRN_Trial\\PRN_Trial.csproj": {}
   },
   "projects": {
-    "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj": {
+    "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj",
-        "projectName": "BusinessObject",
-        "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj",
+        "projectName": "DataAccess",
+        "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\phamt\\.nuget\\packages\\",
         "outputPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
@@ -89,12 +89,12 @@
         }
       }
     },
-    "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj": {
+    "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj",
-        "projectName": "DataAccess",
-        "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj",
+        "projectName": "BusinessObject",
+        "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj",
         "packagesPath": "C:\\Users\\phamt\\.nuget\\packages\\",
         "outputPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
@@ -117,8 +117,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj"
+              "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj": {
+                "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj"
               }
             }
           }
@@ -180,11 +180,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\BusinessObject.csproj"
+              "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj": {
+                "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\BusinessObject\\DataAccess.csproj"
               },
-              "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\DataAccess.csproj"
+              "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj": {
+                "projectPath": "E:\\Fpt\\PRN221\\PRN221_TrialTest\\Git\\Simple_Razor_Page\\DataAccess\\BusinessObject.csproj"
               }
             }
           }

@@ -1,3 +1,4 @@
+using BusinessObject.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +26,7 @@ namespace PRN_Trial
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<CandidateManagementContext, CandidateManagementContext>();   
             services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddSession(config =>
